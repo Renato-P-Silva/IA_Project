@@ -1,0 +1,94 @@
+.container{
+  padding: 20px 30px;
+}
+
+.titulo {
+    text-align: center;
+    color: #FFFFFF;
+   font-family: 'Montserrat', sans-serif;
+   padding: 10px;
+}
+form.centerSelect.form-inline{
+  display: none;
+}
+.centerSelect{
+	/*text-align: center;*/
+  text-align: left;
+}
+body{
+	background-color: #8FBC8F;
+	margin: 15px;
+}
+.header{
+	background-color: rgba(28, 28, 28, 0.79);
+	width:100%;
+}
+.container{
+	background-color: white;
+}
+.criteriaNBLB{
+	margin-right:5px;
+}
+.sld{
+	background-color: beige;
+	font-size: 13.7px;
+  display: none;
+}
+.sbj{
+	background-color: rgba(203, 200, 200, 0.29);
+}
+.btn:focus {
+  outline: none;
+}
+.btn:hover { outline: 0 !important }
+h2,h3{
+	font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #333333;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+nav{
+	display: none;
+}
+footer{
+    top: 10px;
+    margin-top: 0;
+    height: 36px;
+    background-color: rgba(28, 28, 28, 0.79);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+}
+.Copyright{
+	margin-top:9px;
+}
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                50% 50% 
+                no-repeat;
+}
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+#loadingImg{
+ 	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
