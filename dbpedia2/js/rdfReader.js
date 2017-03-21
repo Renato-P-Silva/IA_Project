@@ -1,4 +1,4 @@
-var dbJsonBase = "http://de.dbpedia.org/resource/";
+var dbJsonBase = "http://de.dbpedia.org/resource/"; //base de dados Json
 var dbJsonSuffix = "?output=application/rdf+json"; 
 var dbJson = "";
 var subjectHeader; 
@@ -42,8 +42,8 @@ $(document).on("keyup","#searchfield",function(){
 });
 
 /**
- * Wikipedia search result clicked. 
- * loads uri in  input field and trigger readRdf click event
+ * clique resultado da pesquisa wikipedia. 
+ * carregando URI em campo de entrada e pesquisar RDF em evento de clique
  * */
 $(document).on("click",".uriresult",function(){
 	jQuery('#rdfURI').val($(this).attr("href").substr(1));

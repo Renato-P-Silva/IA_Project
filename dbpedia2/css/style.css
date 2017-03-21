@@ -1,5 +1,12 @@
 h2, h5{
-    font-weight: 700!important;
+    font-weight: 700!important;    
+}
+a:link, a:visited {
+	text-decoration: none!important;
+}
+a:hover {
+	text-decoration: none!important; 
+	color: #f00
 }
 
 .container, .container-fluid {

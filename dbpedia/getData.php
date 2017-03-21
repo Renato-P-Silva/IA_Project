@@ -1,8 +1,4 @@
-
 <?php
-
-
-
 require_once( "sparqllib.php" );
 
 $db = sparql_connect( "http://dbpedia.org/sparql" );
@@ -24,7 +20,7 @@ $query = '
 
 if(!isset($_GET['sbj']) || !isset($_GET['nb']) || !isset($_GET['offnb']) || !isset($_GET['first'])){
 	
-    // Return error message
+    // Retorna messagem de erro
     die( header('HTTP/1.0 500 Internal Server Error'));
 }
 
@@ -35,15 +31,14 @@ $first = $_GET['first'];
 $offnb = $_GET['offnb'];
 
 
-	$q = $query.'SELECT  ?Title ?Description ?Picture WHERE {
+$q = $query.'SELECT  ?Title ?Description ?Picture WHERE {
 					?iten rdfs:label ?Title;
 					     dbo:abstract ?Description;
 					     dbo:thumbnail ?Picture.
 					filter(?Title="'.$subj.'"@en)
 					filter langMatches(lang(?Description) , "En")
 					}';
-if($first == 'true')	{	
-	//with sbj		
+if($first == 'true')	{		
 		$sbjResult = sparql_query( $q ); 
 		if( !$sbjResult ) { print sparql_errno() . ": " . sparql_error(). "\n"; exit;}
   }
@@ -81,7 +76,6 @@ if($first == 'true')	{
 
 					';
 	}
-// if(isset($_GET["offnb"])){
 
 	$query = $q . "offset ".$offnb." LIMIT ".$limit;
 
@@ -105,56 +99,15 @@ if($first == 'true')	{
 	$nbArray  = array('Type' =>$subj );
 	$nbResult = sparql_query( $nbQuery ); 
 	if( !$nbResult ) { print sparql_errno() . ": " . sparql_error(). "\n"; exit;}
-	// $x=(string)sparql_num_rows($nbResult);
-	// echo "rowsnb : $x/// subject : $subj/// limit : $limit/// offnb : $offnb /// first : $first///q:$nbQuery";
-	// exit();
 	if(sparql_num_rows($nbResult) < $limit)
 		$nbArray  = array('off' =>'false' );
 
 	else
 		$nbArray  = array('off' =>'true' );
 
-
-
 	$merge = array_merge($nbArray,$sbjArray); 
 	$merge = array_merge($merge,$itemsArray); 
 
 	echo json_encode($merge);
-// }else{
-// 	$nbQuery = $q. " offset " .($_GET["nb"])." LIMIT ".$limit;
-
-// 	$rows3 = sparql_query( $nbQuery ); 
-
-// 	if(sparql_num_rows($rows3) < $limit)
-// 		$nbArray  = array('off' =>'false' );
-
-// 	else
-// 		$nbArray  = array('off' =>'true' );
-
-
-// // 	$q.=" LIMIT ".$limit;
-// $rows2 = sparql_query( $q ); 
-// if( !$rows2 ) { print sparql_errno() . ": " . sparql_error(). "\n"; exit; }
-// $sbjArray =  array();
-// $itemsArray = array();
-
-
-
-// //sure it's a wrong way to do it but it's sparqllib..
-// while( $row = sparql_fetch_array( $rows ) )
-// 	array_push($sbjArray, $row);
-// while ($row = sparql_fetch_array($rows2))
-// 	array_push($itemsArray, $row);
-
-// $merge = array_merge($nbArray,$sbjArray); 
-
-// $merge = array_merge($merge, $itemsArray); 
-// echo json_encode($merge);
-// //}
-
-
-
-
-
 
 ?>

@@ -82,8 +82,6 @@ body.loading {
     overflow: hidden;   
 }
 
-/* Anytime the body has the loading class, our
-   modal element will be visible */
 body.loading .modal {
     display: block;
 }
